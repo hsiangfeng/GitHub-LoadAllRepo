@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>獲取自己所有Github</title>
+        <title>Vue.js-獲取自己所有Github</title>
         <link rel="stylesheet" href="https://hsiangfeng.github.io/GitHub-LoadAllRepo/css/all.css">
     </head>
 
@@ -21,13 +21,14 @@
                     <li>不懂怎麼查Github名稱就><a href="https://i.imgur.com/pzAslBq.png" target="_black">按我</a></li>
                     <li></li>
                     <li>※無需按下Enter，輸入完畢即可立即顯示。</li>
+                    <li>※點擊欄位標題可排序</li>
                 </ul>
                 <template>{{getRepo}}</template>
                 <table class="table">
                     <thead>
-                        <th>專案名稱</th>
-                        <th>建立日期</th>
-                        <th >最後更新</th>
+                        <th class="Sort" v-on:click="SortAPI = '?sort=full_name'">專案名稱</th>
+                        <th class="Sort" v-on:click="SortAPI = '?sort=created'">建立日期</th>
+                        <th class="Sort" v-on:click="SortAPI = '?sort=updated'">最後更新</th>
                         <th>連結</th>
                     </thead>
                     <tbody v-for="record in repo">

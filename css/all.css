@@ -99,6 +99,15 @@ h3{
 thead th{
     background-color: #3F5D45;
 }
+thead .Sort{
+    background-color: #3F5D45;
+    cursor:pointer;
+    transition: all 0.5s;
+}
+thead .Sort:hover{
+    background-color: #000;
+    transition: all 0.5s;
+}
 thead th,.name,.update{
     font-weight: bold;
 }
