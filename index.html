@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>獲取自己所有Github</title>
+        <link rel="stylesheet" href="css/all.css">
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="wrap">
+                <h1>獲取自己所有Repo數量(目前不支援分頁)</h1>
+                <h3>自訂Api Url(僅支援獲取Repo數量)：</h3>
+                <input type="text" v-model="urlAPI">
+                <ul class="warning">
+                    <li>※輸入範例:https://api.github.com/users/更改成自己的Github名稱/repos</li>
+                    <li>網址最後加入【?per_page=3&sha=】可指定查詢筆數</li>
+                    <li>不懂怎麼查Github名稱就><a href="https://i.imgur.com/pzAslBq.png" target="_black">按我</a></li>
+                    <li></li>
+                    <li>※無需按下Enter，輸入完畢即可立即顯示。</li>
+                </ul>
+                <template>{{getRepo}}</template>
+                <table class="table">
+                    <thead>
+                        <th>專案名稱</th>
+                        <th>建立日期</th>
+                        <th >最後更新</th>
+                        <th>連結</th>
+                    </thead>
+                    <tbody v-for="record in repo">
+                        <tr>
+                            <td class="name">{{record.name}}</td>
+                            <td>{{record.created_at}}</td>
+                            <td class="update">{{record.updated_at}}</td>
+                            <td class="href"><a v-bind:href="record.svn_url">快速連結</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <small>Github api v3</small>
+            </div>
+        </div>
+        <script src="js/vue.min.js"></script>
+        <script src="js/all.js"></script>
+    </body>
+
+</html>
