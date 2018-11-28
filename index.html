@@ -31,8 +31,8 @@
                         <th class="Sort" v-on:click="SortAPI = '?sort=updated'">最後更新</th>
                         <th>連結</th>
                     </thead>
-                    <tbody v-for="record in repo">
-                        <tr>
+                    <tbody>
+                        <tr  v-for="record in repo">
                             <td class="name">{{record.name}}</td>
                             <td>{{record.created_at}}</td>
                             <td class="update">{{record.updated_at}}</td>
