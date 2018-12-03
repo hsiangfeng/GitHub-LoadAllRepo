@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Vue.js-獲取自己所有Github</title>
-        <link rel="stylesheet" href="https://hsiangfeng.github.io/GitHub-LoadAllRepo/css/all.css">
+        <link rel="stylesheet" href="css/all.css">
     </head>
 
     <body>
@@ -18,11 +18,14 @@
                 <ul class="warning">
                     <li>※輸入範例:https://api.github.com/users/更改成自己的Github名稱/repos</li>
                     <li>網址最後加入【?per_page=3&sha=】可指定查詢筆數</li>
-                    <li>不懂怎麼查Github名稱就><a href="https://i.imgur.com/pzAslBq.png" target="_black">按我</a></li>
+                    <li>不懂怎麼查Github名稱就><a href="img/pzAslBq.png" target="_black">按我</a></li>
                     <li></li>
                     <li>※無需按下Enter，輸入完畢即可立即顯示。</li>
                     <li>※點擊欄位標題可排序</li>
                 </ul>
+                <button value="?per_page=5&sha=" v-model="searchPage">僅查詢5筆</button>
+                <button value="?per_page=10&sha=" v-model="searchPage">僅查詢10筆</button>
+                <button value="" v-model="searchPage">查詢全部</button>
                 <template>{{getRepo}}</template>
                 <table class="table">
                     <thead>
@@ -43,8 +46,8 @@
                 <small>Github api v3</small>
             </div>
         </div>
-        <script src="https://hsiangfeng.github.io/GitHub-LoadAllRepo/js/vue.min.js"></script>
-        <script src="https://hsiangfeng.github.io/GitHub-LoadAllRepo/js/all.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/all.js"></script>
     </body>
 
 </html>
