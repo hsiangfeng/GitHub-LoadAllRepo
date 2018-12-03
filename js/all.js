@@ -4,7 +4,7 @@ var app = new Vue({
     urlAPI: 'https://api.github.com/users/hsiangfeng/repos',
     SortAPI: '?sort=updated',
     repo: [],
-    searchPage='',
+    searchPage:'',
   },
   computed: {
     getRepo: function () {
