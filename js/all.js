@@ -1,22 +1,23 @@
 var app = new Vue({
   el: '#app',
   data: {
-    urlAPI: 'https://api.github.com/users/hsiangfeng/repos',
-    SortAPI: '?sort=updated',
+    urlApi: 'https://api.github.com/users/',
+    typeApi: '/repos',
+    urlName: 'vuejs',
+    sortApi: '?sort=updated',
     repo: [],
-    searchPage:'',
+    searchPage: '&per_page=10&sha=',
   },
   computed: {
     getRepo: function () {
       var xhr = new XMLHttpRequest();
-      var self = this;
-      var innterUrl = this.urlAPI + this.SortAPI + this.searchPage;
-      console.log(innterUrl);
+      var vm = this;
+      var innterUrl = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage;
       xhr.open('GET', innterUrl);
+      xhr.send(null);
       xhr.onload = function () {
-        self.repo = JSON.parse(xhr.responseText);
+        vm.repo = JSON.parse(xhr.responseText);
       };
-      xhr.send();
     }
   }
 })
