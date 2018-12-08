@@ -14,6 +14,7 @@ var app = new Vue({
       var xhr = new XMLHttpRequest();
       var vm = this;
       var innterUrl = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage + this.clientId;
+      console.log(innterUrl);
       xhr.open('GET', innterUrl);
       xhr.send(null);
       xhr.onload = function () {
