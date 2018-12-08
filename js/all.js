@@ -7,7 +7,7 @@ var app = new Vue({
     sortApi: '?sort=updated',
     repo: [],
     searchPage: '&per_page=10&sha=',
-    clientId: '&client_secret=6b4879b5d928051d0dd5'
+    clientId: '&client_id=6b4879b5d928051d0dd5'
   },
   computed: {
     getRepo: function () {
