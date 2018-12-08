@@ -7,13 +7,13 @@ var app = new Vue({
     sortApi: '?sort=updated',
     repo: [],
     searchPage: '&per_page=10&sha=',
-    clientId: '&Client_ID=6b4879b5d928051d0dd5'
+    clientId: '&client_secret=6b4879b5d928051d0dd5'
   },
   computed: {
     getRepo: function () {
       var xhr = new XMLHttpRequest();
       var vm = this;
-      var innterUrl = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage + this.client_secret;
+      var innterUrl = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage + this.clientId;
       console.log(innterUrl);
       xhr.open('GET', innterUrl);
       xhr.send(null);
