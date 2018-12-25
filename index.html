@@ -21,8 +21,8 @@
                     <li>※無需按下Enter，輸入完畢即可立即顯示。(建議複製貼上使用者名稱)</li>
                     <li>※點擊欄位標題可排序</li>
                 </ul>
-                <button v-on:click="searchPage = 'per_page=5&sha='">僅查詢5筆</button>
-                <button v-on:click="searchPage = 'per_page=10&sha='">僅查詢10筆</button>
+                <button v-on:click="searchPage = '&per_page=5&sha='">僅查詢5筆</button>
+                <button v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
                 <button v-on:click="searchPage = ''">查詢全部</button>
                 <template>{{getRepo}}</template>
                 <table class="table">
