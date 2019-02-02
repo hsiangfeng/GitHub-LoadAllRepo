@@ -5,47 +5,73 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Vue.js-獲取自己所有Github Repo</title>
-        <link rel="stylesheet" href="css/all.css">
+        <title>取得自己GitHub Repo/vue.js</title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/all.css">
     </head>
 
     <body>
-        <div id="app">
-            <div class="wrap">
-                <h1>獲取自己所有Repo數量(目前不支援分頁)</h1>
-                <h3>輸入使用者名稱(僅支援獲取Repo數量)：</h3>
-                <input type="text" v-model.lazy.trim="urlName">
-                <ul class="warning">
-                    <li>不懂怎麼查Github名稱就><a href="img/pzAslBq.png" target="_black">按我</a></li>
-                    <li></li>
-                    <li>※無需按下Enter，輸入完畢即可立即顯示。(建議複製貼上使用者名稱)</li>
-                    <li>※點擊欄位標題可排序</li>
+        <div id="app" class="wrap rounded">
+            <div class="container py-5">
+                <h1 class="text-center text-white">
+                    <img src="./img/GitHubLoad.png" alt="" width="50px">
+                    <br>
+                    Get GitHub All Repo</h1>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">若不知道自己GitHub名稱，就<a href="img/pzAslBq.png" target="_black">請按我</a></li>
+                    <li class="list-group-item">※無需按下Enter，輸入完畢即可立即顯示。(建議複製貼上使用者名稱)</li>
+                    <li class="list-group-item">※點擊欄位標題可排序</li>
+                    <li class="list-group-item list-group-item-warning">※GitHub有限制查詢次數約60次，請不要過度使用，否則會被封鎖IP位址30~60分鐘不等。</li>
                 </ul>
-                <button v-on:click="searchPage = '&per_page=5&sha='">僅查詢5筆</button>
-                <button v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
-                <button v-on:click="searchPage = ''">查詢全部</button>
                 <template>{{getRepo}}</template>
-                <table class="table">
-                    <thead>
-                        <th class="Sort" v-on:click="sortApi = '?sort=full_name&'">專案名稱</th>
-                        <th class="Sort" v-on:click="sortApi = '?sort=created&'">建立日期</th>
-                        <th class="Sort" v-on:click="sortApi = '?sort=updated&'">最後更新</th>
-                        <th>連結</th>
-                    </thead>
-                    <tbody>
-                        <tr  v-for="record in repo">
-                            <td class="name">{{record.name}}</td>
-                            <td>{{record.created_at}}</td>
-                            <td class="update">{{record.updated_at}}</td>
-                            <td class="href"><a v-bind:href="record.svn_url">快速連結</a></td>
+                <div class="form-group text-center d-flex justify-content-center align-items-center flex-column">
+                    <label for="repoUserName" class="text-white font-weight-bold h3">輸入使用者名稱</label>
+                    <input id="repoUserName" class="form-control w-50" type="text" v-model.lazy.trim="urlName"
+                        placeholder="Github UserName">
+                </div>
+                <div class="text-center my-2">
+                    <button class="btn btn-outline-primary " v-on:click="searchPage = '&per_page=5&sha='">僅查詢5筆</button>
+                    <button class="btn btn-outline-primary" v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
+                    <button class="btn btn-outline-primary" v-on:click="searchPage = ''">查詢全部</button>
+                </div>
+                <table class="table table-hover table-bordered table-striped text-center">
+                    <thead class="thead-light sticky-top">
+                        <tr>
+                            <th width="5%">Index</th>
+                            <th width="40%" class="sort" v-on:click="sortApi = '?sort=full_name&'">Repo Name</th>
+                            <th width="20%" class="sort" v-on:click="sortApi = '?sort=created&'">Set Date</th>
+                            <th width="20%" class="sort" v-on:click="sortApi = '?sort=updated&'">Last Updata</th>
+                            <th width="15%">Link</th>
                         </tr>
+                    </thead>
+                    <tbody class="text-white">
+                        <template v-for="(record,index) in repo" :key="index">
+                            <tr>
+                                <td>{{index + 1}}</td>
+                                <td>{{record.name}}</td>
+                                <td>{{record.created_at}}</td>
+                                <td>{{record.updated_at}}</td>
+                                <td><a :href="record.svn_url">快速連結</a></td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
-                <small>Github api v3</small>
+                <div class="text-center text-white">
+                    目前API Url：{{urlAll}}
+                </div>
+                <div class="text-right">
+                    <small><a href="https://developer.github.com/v3/">Github api v3</a></small>
+                </div>
             </div>
         </div>
-        <script src="js/vue.min.js"></script>
-        <script src="js/all.js"></script>
+        <div class="loading">
+            <img src="./img/GitHubLoad.png" alt="努力預載中..." srcset="" width="80px" class="loadingImg">
+            <div class="loader-content"></div>
+        </div>
+        <script src="./js/jquery-3.3.1.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/vue.js"></script>
+        <script src="./js/all.js"></script>
     </body>
 
 </html>
