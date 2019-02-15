@@ -16,8 +16,12 @@ const app = new Vue({
         .then(data => {
           return data.json()
         }).then(item => {
-          this.urlAll = _Url
-          this.repo = item
+          if (item.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
+            window.alert('出現錯誤：' + item.message)
+          } else {
+            this.urlAll = _Url
+            this.repo = item
+          }
         }).catch(error => {
           window.alert('目前出現錯誤：' + error)
         })
