@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
         <title>取得自己GitHub Repo/vue.js</title>
         <link rel="stylesheet" href="./css/bootstrap.min.css">
         <link rel="stylesheet" href="./css/all.css">
@@ -18,10 +19,12 @@
                     <br>
                     Get GitHub All Repo</h1>
                 <ul class="list-group">
-                    <li class="list-group-item list-group-item-info">若不知道自己GitHub名稱，就<a href="img/pzAslBq.png" target="_black">請按我</a></li>
+                    <li class="list-group-item list-group-item-info">若不知道自己GitHub名稱，就<a href="img/pzAslBq.png"
+                            target="_black">請按我</a></li>
                     <li class="list-group-item">※無需按下Enter，輸入完畢即可立即顯示。(建議複製貼上使用者名稱)</li>
                     <li class="list-group-item">※點擊欄位標題可排序</li>
-                    <li class="list-group-item list-group-item-warning">※GitHub有限制查詢次數約60次，請不要過度使用，否則會被封鎖IP位址30~60分鐘不等。</li>
+                    <li class="list-group-item list-group-item-warning">※GitHub有限制查詢次數約60次，請不要過度使用，否則會被封鎖IP位址30~60分鐘不等。
+                    </li>
                 </ul>
                 <template>{{getRepo}}</template>
                 <div class="form-group text-center d-flex justify-content-center align-items-center flex-column">
@@ -31,7 +34,8 @@
                 </div>
                 <div class="text-center my-2">
                     <button class="btn btn-outline-primary " v-on:click="searchPage = '&per_page=5&sha='">僅查詢5筆</button>
-                    <button class="btn btn-outline-primary" v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
+                    <button class="btn btn-outline-primary"
+                        v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
                     <button class="btn btn-outline-primary" v-on:click="searchPage = ''">查詢全部</button>
                 </div>
                 <div class="table-responsive">
@@ -70,6 +74,9 @@
             <img src="./img/GitHubLoad.png" alt="努力預載中..." srcset="" width="80px" class="loadingImg">
             <div class="loader-content"></div>
         </div>
+        <a href="https://hsiangfeng.github.io/Gitlab-LoadAllRepo/">
+            <img class="float-logo" src="./img/GitLablogo.png" alt="前往GitLab版" style="width:50px;" />
+        </a>
         <script src="./js/jquery-3.3.1.js"></script>
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/vue.js"></script>

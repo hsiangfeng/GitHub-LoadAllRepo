@@ -19,7 +19,7 @@ const app = new Vue({
           this.urlAll = _Url
           this.repo = item
         }).catch(error => {
-          console.log(error)
+          window.alert('目前出現錯誤：' + error)
         })
     }
   }
