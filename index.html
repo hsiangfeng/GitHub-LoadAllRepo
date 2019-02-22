@@ -17,40 +17,46 @@
                 <h1 class="text-center text-white">
                     <img src="./img/GitHubLoad.png" alt="" width="50px">
                     <br>
-                    Get GitHub All Repo</h1>
+                    Get GitHub All Repo
+                </h1>
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-info">若不知道自己GitHub名稱，就<a href="img/pzAslBq.png"
                             target="_black">請按我</a></li>
-                    <li class="list-group-item">※無需按下Enter，輸入完畢即可立即顯示。(建議複製貼上使用者名稱)</li>
+                    <li class="list-group-item">※輸入完畢，按下Enter即可顯示。(建議複製貼上使用者名稱)</li>
+                    <li class="list-group-item">※可透過關注保存使用者名稱(暫存瀏覽器)。</li>
                     <li class="list-group-item">※點擊欄位標題可排序</li>
-                    <li class="list-group-item list-group-item-warning">※GitHub有限制查詢次數約60次，請不要過度使用，否則會被封鎖IP位址30~60分鐘不等。
+                    <li class="list-group-item list-group-item-warning">※GitHub有限制查詢次數約60次，請不要過度使用，否則會被封鎖IP位址數分鐘。
                     </li>
                 </ul>
-                <template>{{getRepo}}</template>
                 <div class="form-group text-center d-flex justify-content-center align-items-center flex-column">
                     <label for="repoUserName" class="text-white font-weight-bold h3">輸入使用者名稱</label>
-                    <input id="repoUserName" class="form-control w-50" type="text" v-model.lazy.trim="urlName"
-                        placeholder="Github UserName">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input id="repoUserName" class="form-control" type="text" v-model.trim="urlName" @keyup.enter="getRepo" placeholder="Github UserName">
+                        </div>
+                        <button class="btn btn-primary mx-2" type="button" @click="getRepo">查詢</button>
+                        <button class="btn btn-primary" type="button" @click="addRepo">關注</button>
+                    </div>
+                    <div class="text-center text-white mt-2">目前查詢名稱：{{ urlName }}</div>
                 </div>
                 <div class="text-center my-2">
-                    <button class="btn btn-outline-primary " v-on:click="searchPage = '&per_page=5&sha='">僅查詢5筆</button>
-                    <button class="btn btn-outline-primary"
-                        v-on:click="searchPage = '&per_page=10&sha='">僅查詢10筆</button>
-                    <button class="btn btn-outline-primary" v-on:click="searchPage = ''">查詢全部</button>
+                    <button class="btn btn-outline-primary " @click="searchPage = '&per_page=5&sha=',getRepo()">僅查詢5筆</button>
+                    <button class="btn btn-outline-primary" @click="searchPage = '&per_page=10&sha=',getRepo()">僅查詢10筆</button>
+                    <button class="btn btn-outline-primary" @click="searchPage = '',getRepo()">查詢全部</button>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered table-striped text-center">
                         <thead class="thead-light sticky-top">
                             <tr>
                                 <th width="5%">Index</th>
-                                <th width="40%" class="sort" v-on:click="sortApi = '?sort=full_name&'">Repo Name</th>
-                                <th width="20%" class="sort" v-on:click="sortApi = '?sort=created&'">Set Date</th>
-                                <th width="20%" class="sort" v-on:click="sortApi = '?sort=updated&'">Last Updata</th>
+                                <th width="40%" class="sort" @click="sortApi = '?sort=full_name&',getRepo()">Repo Name</th>
+                                <th width="20%" class="sort" @click="sortApi = '?sort=created&',getRepo()">Set Date</th>
+                                <th width="20%" class="sort" @click="sortApi = '?sort=updated&',getRepo()">Last Updata</th>
                                 <th width="15%">Link</th>
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            <template v-for="(record,index) in repo" :key="index">
+                            <template v-for="(record,index) in repo">
                                 <tr>
                                     <td>{{index + 1}}</td>
                                     <td>{{record.name}}</td>
