@@ -3,7 +3,7 @@ const app = new Vue({
   data: {
     urlApi: 'https://api.github.com/users/',
     typeApi: '/repos',
-    urlName: '',
+    urlName: 'vuejs',
     sortApi: '?sort=updated',
     repo: [],
     searchPage: '&per_page=5&sha=',
