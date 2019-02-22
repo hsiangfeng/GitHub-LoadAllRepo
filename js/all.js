@@ -11,24 +11,23 @@ const app = new Vue({
   },
   methods: {
     initRepo () {
-      this.urlName = JSON.parse(window.localStorage.getItem('githubName')) || ''
-      let _Url = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage
-      this.ajaxRepo(_Url)
+      let localUserName = JSON.parse(window.localStorage.getItem('githubName')) || []
+      if (localUserName.length !== 0) {
+        this.urlName = localUserName
+      }
+      this.ajaxRepo()
     },
-    getRepo () {
-      let _Url = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage
-      this.ajaxRepo(_Url)
-    },
-    ajaxRepo (url) {
+    ajaxRepo () {
       const vm = this
-      window.fetch(url, { method: 'get' })
+      let _Url = this.urlApi + this.urlName + this.typeApi + this.sortApi + this.searchPage
+      window.fetch(_Url, { method: 'get' })
         .then(data => {
           return data.json()
         }).then(item => {
           if (item.documentation_url === 'https://developer.github.com/v3/#rate-limiting') {
             window.alert('出現錯誤：' + item.message)
           } else {
-            vm.urlAll = url
+            vm.urlAll = _Url
             vm.repo = item
           }
         }).catch(error => {
@@ -38,7 +37,7 @@ const app = new Vue({
     addRepo () {
       const vm = this
       window.localStorage.setItem('githubName', JSON.stringify(vm.urlName))
-      window.alret(`已將目前 ${vm.urlName} 對象加入關注。`)
+      window.alert(`已將目前 ${vm.urlName} 對象加入關注。`)
     }
   },
   created () {

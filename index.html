@@ -32,26 +32,26 @@
                     <label for="repoUserName" class="text-white font-weight-bold h3">輸入使用者名稱</label>
                     <div class="form-inline">
                         <div class="form-group">
-                            <input id="repoUserName" class="form-control" type="text" v-model.trim="urlName" @keyup.enter="getRepo" placeholder="Github UserName">
+                            <input id="repoUserName" class="form-control" type="text" v-model.trim="urlName" @keyup.enter="ajaxRepo" placeholder="Github UserName">
                         </div>
-                        <button class="btn btn-primary mx-2" type="button" @click="getRepo">查詢</button>
-                        <button class="btn btn-primary" type="button" @click="addRepo">關注</button>
+                        <button class="btn btn-outline-primary mx-2" type="button" @click="ajaxRepo">查詢</button>
+                        <button class="btn btn-outline-primary" type="button" @click="addRepo">關注</button>
                     </div>
                     <div class="text-center text-white mt-2">目前查詢名稱：{{ urlName }}</div>
                 </div>
                 <div class="text-center my-2">
-                    <button class="btn btn-outline-primary " @click="searchPage = '&per_page=5&sha=',getRepo()">僅查詢5筆</button>
-                    <button class="btn btn-outline-primary" @click="searchPage = '&per_page=10&sha=',getRepo()">僅查詢10筆</button>
-                    <button class="btn btn-outline-primary" @click="searchPage = '',getRepo()">查詢全部</button>
+                    <button class="btn btn-outline-primary " @click="searchPage = '&per_page=5&sha=',ajaxRepo()">僅查詢5筆</button>
+                    <button class="btn btn-outline-primary" @click="searchPage = '&per_page=10&sha=',ajaxRepo()">僅查詢10筆</button>
+                    <button class="btn btn-outline-primary" @click="searchPage = '',ajaxRepo()">查詢全部</button>
                 </div>
                 <div class="table-responsive-md">
                     <table class="table table-hover table-bordered table-striped text-center">
                         <thead class="thead-light sticky-top">
                             <tr>
                                 <th width="5%">Index</th>
-                                <th width="40%" class="sort" @click="sortApi = '?sort=full_name&',getRepo()">Repo Name</th>
-                                <th width="20%" class="sort" @click="sortApi = '?sort=created&',getRepo()">Set Date</th>
-                                <th width="20%" class="sort" @click="sortApi = '?sort=updated&',getRepo()">Last Updata</th>
+                                <th width="40%" class="sort" @click="sortApi = '?sort=full_name&',ajaxRepo()">Repo Name</th>
+                                <th width="20%" class="sort" @click="sortApi = '?sort=created&',ajaxRepo()">Set Date</th>
+                                <th width="20%" class="sort" @click="sortApi = '?sort=updated&',ajaxRepo()">Last Updata</th>
                                 <th width="15%">Link</th>
                             </tr>
                         </thead>
