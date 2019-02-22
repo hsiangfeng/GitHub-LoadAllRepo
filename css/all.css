@@ -79,6 +79,9 @@ body{
     bottom: 10px;
     z-index: 10;
 }
+table.table-hover tbody tr:hover {
+    background-color: #0c5460; 
+}
 @keyframes loader{
     0%{
         transform: rotate(0deg);
