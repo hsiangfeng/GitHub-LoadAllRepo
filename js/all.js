@@ -8,7 +8,7 @@ const app = new Vue({
     sortApi: '?sort=updated',
     repo: [],
     searchPage: '&per_page=5&sha=',
-    urlAll: ''
+    urlAll: '',
   },
   methods: {
     initRepo() {
